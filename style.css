@@ -1,0 +1,131 @@
+ html {
+     scroll-behavior: smooth;
+ }
+
+ .bubble {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     animation: waveFloat 4s ease-in-out infinite;
+     transition: transform 0.3s ease;
+ }
+
+ .bubble:hover {
+     transform: scale(1.15);
+ }
+
+ /* Wave motion */
+ @keyframes waveFloat {
+     0% {
+         transform: translateY(0);
+     }
+
+     25% {
+         transform: translateY(-14px);
+     }
+
+     50% {
+         transform: translateY(0);
+     }
+
+     75% {
+         transform: translateY(14px);
+     }
+
+     100% {
+         transform: translateY(0);
+     }
+ }
+
+ /* Wave delay for sequence */
+ .bubble:nth-child(1) {
+     animation-delay: 0s;
+ }
+
+ .bubble:nth-child(2) {
+     animation-delay: 0.2s;
+ }
+
+ .bubble:nth-child(3) {
+     animation-delay: 0.4s;
+ }
+
+ .bubble:nth-child(4) {
+     animation-delay: 0.6s;
+ }
+
+ .bubble:nth-child(5) {
+     animation-delay: 0.8s;
+ }
+
+ .bubble:nth-child(6) {
+     animation-delay: 1s;
+ }
+
+ .bubble:nth-child(7) {
+     animation-delay: 1.2s;
+ }
+
+ /* Colored glow only below each bubble (no bg) */
+ .glow-html {
+     filter: drop-shadow(0 4px 12px rgba(255, 102, 0, 0.6));
+ }
+
+ .glow-css {
+     filter: drop-shadow(0 4px 12px rgba(210, 101, 246, 0.6));
+ }
+
+ .glow-js {
+     filter: drop-shadow(0 4px 12px rgba(255, 255, 0, 0.5));
+ }
+
+ .glow-react {
+     filter: drop-shadow(0 4px 12px rgba(97, 218, 251, 0.6));
+ }
+
+ .glow-python {
+     filter: drop-shadow(0 4px 12px rgba(76, 175, 80, 0.6));
+ }
+
+ .glow-tailwind {
+     filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.6));
+ }
+
+ .fade-in {
+     opacity: 0;
+     transform: translateY(20px);
+     animation: fadeInUp 1.2s ease-out forwards;
+ }
+
+ @keyframes fadeInUp {
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* Canging role animation */
+#changing-role {
+  border-right: 2px solid #facc15; /* yellow blinking cursor */
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle; /* ✅ fix baseline misalignment */
+  line-height: 1.2; /* ensure consistent vertical centering */
+  margin-right: 4px; /* small gap before next text */
+  animation: blinkCursor 0.7s infinite;
+  text-shadow: 0px 4px 6px rgba(250, 204, 21, 0.7);
+
+}
+
+@keyframes blinkCursor {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #facc15;
+  }
+}
+
+
