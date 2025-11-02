@@ -57,3 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     typeEffect();
   });
+
+
+  document.addEventListener("mousemove", (e) => {
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
+
+  const stars = document.querySelector(".stars");
+  const twinkling = document.querySelector(".twinkling");
+  const nebula = document.querySelector(".nebula");
+
+  stars.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+  twinkling.style.transform = `translate(${x * 60}px, ${y * 60}px)`;
+  nebula.style.transform = `translate(${x * 90}px, ${y * 90}px)`;
+});

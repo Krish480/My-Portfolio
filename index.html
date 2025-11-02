@@ -7,68 +7,88 @@
     <title>Krishna Pandey | Portfolio</title>
     <link rel="stylesheet" href="dist/output.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/Profile_photo.jpg">
+    <link rel="icon" href="images/Profile photo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-gray-950 text-white font-sans">
+<body class="text-white font-sans">
+    <!-- 🌌 Galaxy Background Layers -->
+    <div class="galaxy-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
+    </div>
+
 
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-yellow-400 text-black shadow-md">
-        <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <header
+        class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-yellow-400/30 shadow-[0_2px_10px_rgba(250,204,21,0.2)] transition-all duration-300">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4">
 
             <!-- Logo / Name -->
-            <h1 class="text-2xl font-bold">Krishna Pandey</h1>
+            <h1
+                class="text-2xl md:text-3xl font-extrabold text-yellow-400 tracking-wide drop-shadow-[0_0_10px_rgba(250,204,21,0.5)] cursor-pointer hover:scale-105 transition-transform duration-300">
+                Krishna Pandey
+            </h1>
 
             <!-- Desktop Menu -->
-            <ul id="nav-links" class="hidden md:flex gap-8 font-medium">
-                <li><a href="#home" class="hover:text-gray-700 transition">Home</a></li>
-                <li><a href="#about" class="hover:text-gray-700 transition">About</a></li>
-                <li><a href="#projects" class="hover:text-gray-700 transition">Projects</a></li>
-                <li><a href="#contact" class="hover:text-gray-700 transition">Contact</a></li>
+            <ul id="nav-links" class="hidden md:flex items-center gap-8 font-medium text-gray-200">
+                <li><a href="#home"
+                        class="hover:text-yellow-400 hover:drop-shadow-[0_0_8px_rgba(250,204,21,0.8)] transition duration-300">Home</a>
+                </li>
+                <li><a href="#about"
+                        class="hover:text-yellow-400 hover:drop-shadow-[0_0_8px_rgba(250,204,21,0.8)] transition duration-300">About</a>
+                </li>
+                <li><a href="#projects"
+                        class="hover:text-yellow-400 hover:drop-shadow-[0_0_8px_rgba(250,204,21,0.8)] transition duration-300">Projects</a>
+                </li>
+                <li><a href="#contact"
+                        class="hover:text-yellow-400 hover:drop-shadow-[0_0_8px_rgba(250,204,21,0.8)] transition duration-300">Contact</a>
+                </li>
             </ul>
 
             <!-- Hamburger Button -->
-            <button id="menu-btn" class="md:hidden text-2xl">
+            <button id="menu-btn"
+                class="md:hidden text-yellow-400 text-3xl focus:outline-none hover:scale-110 transition-transform duration-300">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </nav>
 
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-yellow-300 text-black shadow-inner">
-            <ul class="flex flex-col items-center gap-4 py-4 font-semibold">
-                <li><a href="#home" class="hover:text-gray-700 transition">Home</a></li>
-                <li><a href="#about" class="hover:text-gray-700 transition">About</a></li>
-                <li><a href="#projects" class="hover:text-gray-700 transition">Projects</a></li>
-                <li><a href="#contact" class="hover:text-gray-700 transition">Contact</a></li>
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-black/90 text-yellow-400 backdrop-blur-md border-t border-yellow-400/30 shadow-inner">
+            <ul class="flex flex-col items-center gap-5 py-6 font-semibold text-lg">
+                <li><a href="#home" class="hover:text-white transition duration-300">Home</a></li>
+                <li><a href="#about" class="hover:text-white transition duration-300">About</a></li>
+                <li><a href="#projects" class="hover:text-white transition duration-300">Projects</a></li>
+                <li><a href="#contact" class="hover:text-white transition duration-300">Contact</a></li>
             </ul>
         </div>
     </header>
 
 
+
     <!-- Hero Section -->
     <section id="home"
-        class="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white flex flex-col-reverse md:flex-row items-center justify-center md:justify-between px-8 md:px-16 lg:px-32 py-20 gap-12">
+        class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-16 lg:px-32 py-20 gap-12 text-white relative overflow-hidden">
 
-        <!-- Left Side Content -->
+        <!-- Left Content -->
         <div class="flex-1 text-left max-w-xl fade-in">
             <h2 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-                Hello, I’m <span class="text-yellow-400">Krishna Pandey</span>
+                Hello, I’m <span class="text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.6)]">Krishna
+                    Pandey</span>
             </h2>
 
             <p class="text-gray-300 text-lg md:text-xl leading-relaxed mt-4 flex flex-wrap items-center">
-                I’m a &nbsp;<span id="changing-role" class="text-yellow-400 font-semibold whitespace-nowrap"></span>
+                I’m a&nbsp;<span id="changing-role" class="text-yellow-400 font-semibold whitespace-nowrap"></span>
                 <span class="inline"> who loves crafting smooth, responsive, and dynamic web experiences using </span>
                 <span class="text-yellow-400 font-semibold">HTML</span>,
                 <span class="text-yellow-400 font-semibold">CSS</span>,
-                <span class="text-yellow-400 font-semibold">React</span>, and &nbsp;
+                <span class="text-yellow-400 font-semibold">React</span>, and&nbsp;
                 <span class="text-yellow-400 font-semibold">Python</span>.
             </p>
-
-
-
 
             <!-- Buttons -->
             <div class="flex flex-wrap items-center gap-4 mt-8">
@@ -89,7 +109,7 @@
                     <p class="text-sm text-gray-400">Technologies Learned</p>
                 </div>
                 <div>
-                    <p class="text-4xl font-bold text-yellow-400">10+</p>
+                    <p class="text-4xl font-bold text-yellow-400">7+</p>
                     <p class="text-sm text-gray-400">Projects Completed</p>
                 </div>
                 <div>
@@ -100,140 +120,390 @@
         </div>
 
         <!-- Right Side Image -->
-        <div
-            class="flex-1 flex justify-center items-center relative bg-gradient-to-tr from-yellow-400/10 via-transparent to-transparent rounded-3xl p-6 shadow-2xl fade-in">
-
-            <div class="relative group">
-                <!-- Outer Glow -->
-                <div
-                    class="absolute inset-0 rounded-full blur-2xl opacity-50 bg-yellow-400 group-hover:opacity-80 transition duration-500">
-                </div>
-
-                <!-- Profile Image -->
-                <img src="images/Profile photo.png" alt="Profile"
-                    class="relative rounded-full w-64 sm:w-72 md:w-80 lg:w-96 h-auto object-cover border-4 border-yellow-400 shadow-[0_10px_40px_rgba(255,215,0,0.3)] group-hover:scale-105 transition-transform duration-500 ease-out" />
+        <div class="flex-1 flex justify-center items-center relative group fade-in">
+            <div
+                class="absolute inset-0 rounded-full bg-yellow-400/10 blur-3xl opacity-60 group-hover:opacity-90 transition duration-700">
             </div>
+            <img src="images/Profile photo.png" alt="Profile"
+                class="relative rounded-full w-64 sm:w-72 md:w-80 lg:w-96 h-auto object-cover border-4 border-yellow-400 shadow-[0_0_40px_rgba(250,204,21,0.4)] group-hover:scale-105 transition-transform duration-700 ease-out" />
         </div>
 
+        <!-- Scroll Indicator -->
+        <a href="#about"
+            class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-yellow-400 text-2xl">
+            <i class="fa-solid fa-angles-down"></i>
+        </a>
     </section>
 
-    <!-- Scroll Down Arrow -->
-    <div class="flex justify-center mt-[-4rem] mb-12">
-        <a href="#about" class="scroll-down">
-            <i class="fa-solid fa-angles-down text-yellow-400 text-3xl animate-bounce"></i>
-        </a>
-    </div>
-
-
-
-
     <!-- About Section -->
-    <section id="about" class="max-w-4xl mx-auto px-6 py-12">
-        <h2 class="text-3xl font-bold mb-6 text-yellow-400">About Me</h2>
-        <p class="text-gray-300 mb-6">I’m a passionate frontend developer skilled in HTML, CSS, JavaScript, and React.
-            I love building responsive, user-friendly websites and web apps.</p>
+    <section id="about"
+        class="min-h-screen flex flex-col items-center justify-center px-6 md:px-16 py-20 text-white relative overflow-hidden">
 
-        <h3 class="text-2xl font-semibold mb-4">Skills</h3>
+        <!-- Heading -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-3 tracking-wide">
+                About Me
+            </h2>
+            <div class="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
 
-        <div class="relative flex flex-wrap justify-center gap-8 mt-8">
+        <!-- Description -->
+        <div class="max-w-3xl text-center fade-in">
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-8">
+                I’m <span class="text-yellow-400 font-semibold">Krishna Pandey</span>, a passionate and creative
+                frontend developer
+                who loves turning ideas into interactive digital experiences. My focus is on building
+                <span class="text-yellow-400">modern, responsive, and accessible</span> web applications using
+                the latest technologies like <span class="text-yellow-400">HTML</span>,
+                <span class="text-yellow-400">CSS</span>, <span class="text-yellow-400">JavaScript</span>,
+                and <span class="text-yellow-400">React</span>.
+                <br><br>
+                I’m also exploring backend technologies such as <span class="text-yellow-400">Node.js</span> and
+                <span class="text-yellow-400">Python</span> to become a full-stack developer.
+                I pay strong attention to <span class="text-yellow-400">UI/UX design principles</span>, ensuring every
+                website I create
+                is both visually appealing and intuitive for users.
+                <br><br>
+                My ultimate goal is to build impactful digital solutions that make a difference and reflect my
+                creativity, logic,
+                and passion for technology.
+            </p>
+        </div>
+
+        <!-- Skills -->
+        <h3 class="text-2xl md:text-3xl font-semibold text-yellow-400 mt-10 mb-6">My Skills</h3>
+
+        <div class="relative flex flex-wrap justify-center gap-10 md:gap-12 mt-6 fade-in">
             <!-- HTML -->
             <div class="bubble glow-html">
                 <img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000" alt="HTML"
-                    class="h-12 w-12" />
-                <p class="text-xs mt-1 text-orange-500 font-semibold">HTML</p>
+                    class="h-14 w-14" />
+                <p class="text-sm mt-2 text-orange-500 font-semibold">HTML</p>
             </div>
 
             <!-- CSS -->
             <div class="bubble glow-css">
                 <img src="https://coywolf.com/wp-content/uploads/2024/11/purple-css-logo.webp" alt="CSS"
-                    class="h-12 w-12" />
-                <p class="text-xs mt-1 text-purple-500 font-semibold">CSS</p>
+                    class="h-14 w-14" />
+                <p class="text-sm mt-2 text-blue-500 font-semibold">CSS</p>
             </div>
 
             <!-- JavaScript -->
             <div class="bubble glow-js">
                 <img src="https://images.seeklogo.com/logo-png/27/1/javascript-js-logo-png_seeklogo-273557.png" alt="JS"
-                    class="rounded-md h-12 w-12" />
-                <p class="text-xs mt-1 text-yellow-400 font-semibold">JavaScript</p>
+                    class="h-14 w-14 rounded-md" />
+                <p class="text-sm mt-2 text-yellow-400 font-semibold">JavaScript</p>
             </div>
 
             <!-- React -->
             <div class="bubble glow-react">
                 <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-1024.png" alt="React"
-                    class="h-12 w-12" />
-                <p class="text-xs mt-1 text-blue-400 font-semibold">React</p>
+                    class="h-14 w-14" />
+                <p class="text-sm mt-2 text-blue-400 font-semibold">React</p>
             </div>
 
             <!-- Python -->
             <div class="bubble glow-python">
-                <img src="https://img.icons8.com/?size=96&id=13441&format=png" alt="Python" class="h-12 w-12" />
-                <p class="text-xs mt-1 text-green-400 font-semibold">Python</p>
+                <img src="https://img.icons8.com/?size=96&id=13441&format=png" alt="Python" class="h-14 w-14" />
+                <p class="text-sm mt-2 text-green-400 font-semibold">Python</p>
             </div>
 
             <!-- Tailwind -->
             <div class="bubble glow-tailwind">
                 <img src="https://img.icons8.com/?size=96&id=4PiNHtUJVbLs&format=png" alt="Tailwind"
-                    class="h-12 w-12" />
-                <p class="text-xs mt-1 text-cyan-400 font-semibold">TailwindCSS</p>
+                    class="h-14 w-14" />
+                <p class="text-sm mt-2 text-cyan-400 font-semibold">TailwindCSS</p>
             </div>
 
             <!-- NodeJS -->
             <div class="bubble glow-node">
-                <img src="https://nodejs.org/static/logos/nodejsLight.svg" alt="NodeJS" class="h-12 w-12" />
-                <p class="text-xs mt-1 text-lime-400 font-semibold">NodeJS</p>
+                <img src="https://nodejs.org/static/logos/nodejsLight.svg" alt="NodeJS" class="h-14 w-14" />
+                <p class="text-sm mt-2 text-lime-400 font-semibold">NodeJS</p>
             </div>
         </div>
-
-
     </section>
+
 
     <!-- Projects Section -->
-    <section id="projects" class="bg-gray-900 py-16 px-6">
-        <h2 class="text-3xl text-center font-bold mb-12 text-yellow-400">Projects</h2>
-        <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+    <section id="projects"
+        class="min-h-screen flex flex-col justify-center items-center py-20 px-6 text-white relative overflow-hidden">
 
-            <div class="bg-gray-800 rounded-lg p-5 text-center hover:scale-105 transition duration-300 shadow-md">
-                <img src="images/Clg logo.jpg" alt="Project 1"
-                    class="w-48 h-48 mx-auto rounded-full mb-4 object-cover" />
-                <h3 class="text-xl font-semibold mb-2">EIET College Website</h3>
-                <p class="text-gray-400 mb-3">A simple and informative college website for students.</p>
+        <!-- Heading -->
+        <div class="text-center mb-16">
+            <h2
+                class="text-4xl md:text-5xl font-extrabold text-yellow-400 drop-shadow-[0_0_12px_rgba(250,204,21,0.7)] tracking-wide">
+                My Projects
+            </h2>
+            <div class="w-24 h-1 bg-yellow-400 mx-auto mt-3 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.6)]"></div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <!-- EIET -->
+            <div
+                class="bg-white/10 backdrop-blur-md border border-yellow-400/30 rounded-2xl p-8 text-center hover:scale-105 hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-500">
+                <img src="images/eiet.jpg" alt="EIET College Website"
+                    class="h-40 mx-auto rounded-md mb-6 object-cover border-4 border-yellow-400 shadow-[0_0_25px_rgba(250,204,21,0.5)]" />
+                <h3 class="text-2xl font-bold text-yellow-400 mb-3">EIET College Website</h3>
+                <p class="text-gray-300 mb-6">A modern and responsive college website designed for students with clean
+                    navigation and elegant UI.</p>
+
+                <!-- Buttons -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://github.com/Krish480/College-website.git" target="_blank"
+                        class="px-5 py-2 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-black hover:text-yellow-400 border border-yellow-400 transition-all duration-300">
+                        <i class="fa-brands fa-github mr-2"></i> GitHub
+                    </a>
+                    <a href="https://eiet.netlify.app" target="_blank"
+                        class="px-5 py-2 bg-transparent border border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-link mr-2"></i> Live Demo
+                    </a>
+                </div>
             </div>
 
-            <div class="bg-gray-800 rounded-lg p-5 text-center hover:scale-105 transition duration-300 shadow-md">
-                <img src="images/Rudra logo.png" alt="Project 2"
-                    class="w-48 h-48 mx-auto rounded-full mb-4 object-cover" />
-                <h3 class="text-xl font-semibold mb-2">Rudra Virtual AI Assistant</h3>
-                <p class="text-gray-400 mb-3">AI chatbot using Fetch API and voice recognition with ElevenLabs.</p>
+            <!-- MealMatrix -->
+            <div
+                class="bg-white/10 backdrop-blur-md border border-yellow-400/30 rounded-2xl p-6 text-center hover:scale-105 hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-500">
+
+                <img src="images/MealMatrix.jpg" alt="MealMatrix"
+                    class="h-40 mx-auto rounded-md mb-6 object-cover border-4 border-yellow-400 shadow-[0_0_25px_rgba(250,204,21,0.5)]" />
+
+                <h3 class="text-2xl font-bold text-yellow-400 mb-3">MealMatrix</h3>
+
+                <p class="text-gray-300 mb-6">
+                    A modern catering reservation system for managing meal bookings and event orders efficiently,
+                    built using <span class="text-yellow-400 font-semibold">EJS</span> and <span
+                        class="text-yellow-400 font-semibold">Node.js</span>.
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://github.com/Krish480/catering-reservation-system" target="_blank"
+                        class="px-5 py-2 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-black hover:text-yellow-400 border border-yellow-400 transition-all duration-300">
+                        <i class="fa-brands fa-github mr-2"></i> GitHub
+                    </a>
+                    <a href="https://mealmatrix-e5ut.onrender.com" target="_blank"
+                        class="px-5 py-2 bg-transparent border border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-link mr-2"></i> Live Demo
+                    </a>
+                </div>
             </div>
+
+            <!-- ShopMetrix -->
+
+            <div
+                class="bg-white/10 backdrop-blur-md border border-yellow-400/30 rounded-2xl p-6 text-center hover:scale-105 hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-500">
+
+                <img src="images/sh.jpg" alt="ShopMetrix"
+                    class="h-40 mx-auto rounded-md mb-6 object-cover border-4 border-yellow-400 shadow-[0_0_25px_rgba(250,204,21,0.5)]" />
+
+                <h3 class="text-2xl font-bold text-yellow-400 mb-3">ShopMetrix</h3>
+
+                <p class="text-gray-300 mb-6">
+                    An online shopping and product management platform built with
+                    <span class="text-yellow-400 font-semibold">HTML</span>,
+                    <span class="text-yellow-400 font-semibold">CSS</span>, and
+                    <span class="text-yellow-400 font-semibold">JavaScript</span>.
+                    It provides smooth shopping and admin controls.
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://github.com/Krish480/ShopMatrix" target="_blank"
+                        class="px-5 py-2 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-black hover:text-yellow-400 border border-yellow-400 transition-all duration-300">
+                        <i class="fa-brands fa-github mr-2"></i> GitHub
+                    </a>
+                    <a href="https://shopmatrix-23995.web.app" target="_blank"
+                        class="px-5 py-2 bg-transparent border border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-link mr-2"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- MindArena -->
+            <div
+                class="bg-white/10 backdrop-blur-md border border-yellow-400/30 rounded-2xl p-6 text-center hover:scale-105 hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-500">
+
+                <img src="images/MindArena.jpg" alt="MindArena Quiz App"
+                    class="h-40 mx-auto rounded-md mb-6 object-cover border-4 border-yellow-400 shadow-[0_0_25px_rgba(250,204,21,0.5)]" />
+
+                <h3 class="text-2xl font-bold text-yellow-400 mb-3">MindArena Quiz App</h3>
+
+                <p class="text-gray-300 mb-6">
+                    A fun and interactive quiz platform with live score tracking, smooth UI, and engaging gameplay.
+                </p>
+
+                <div class="flex justify-center gap-4">
+                    <a href="https://github.com/Krish480/MindArena-Quiz-App" target="_blank"
+                        class="px-5 py-2 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-black hover:text-yellow-400 border border-yellow-400 transition-all duration-300">
+                        <i class="fa-brands fa-github mr-2"></i> GitHub
+                    </a>
+
+                    <a href="https://mindarena.netlify.app" target="_blank"
+                        class="px-5 py-2 bg-transparent border border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-link mr-2"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Rudra  -->
+            <div
+                class="bg-white/10 backdrop-blur-md border border-yellow-400/30 rounded-2xl p-8 text-center hover:scale-105 hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-500">
+                <img src="images/Rudra logo.png" alt="Rudra Virtual AI Assistant"
+                    class="h-40 w-40 mx-auto rounded-full mb-6 object-cover shadow-[0_0_25px_rgba(250,204,21,0.5)]" />
+                <h3 class="text-2xl font-bold text-yellow-400 mb-3">Rudra Virtual AI Assistant</h3>
+                <p class="text-gray-300 mb-6">An intelligent AI-powered voice assistant built using Flask, ElevenLabs,
+                    and
+                    OpenAI APIs.</p>
+
+                <!-- Buttons -->
+                <div class="flex justify-center git gap-5">
+                    <a href="https://github.com/Krish480/Rudra-Virtual-AI-Assistant" target="_blank"
+                        class="px-5 py-2 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-black hover:text-yellow-400 border border-yellow-400 transition-all duration-300">
+                        <i class="fa-brands fa-github mr-2"></i>
+                        GitHub
+                    </a>
+
+                    <!-- Live Demo Button with message inside -->
+                    <a href="#"
+                        class="live-demo-btn px-5 py-2 bg-transparent border border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 relative overflow-hidden">
+                        <i class="fa-solid fa-link mr-2"></i>
+                        <span class="btn-text">Live Demo</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Personal Portfolio -->
+            <div
+                class="bg-white/10 backdrop-blur-md border border-yellow-400/40 rounded-2xl p-6 text-center hover:scale-105 hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-500">
+
+                <img src="images/My_portfolio.jpg" alt="Personal Portfolio Website"
+                    class="h-40 mx-auto rounded-md mb-6 object-cover border-4 border-yellow-400 shadow-[0_0_25px_rgba(250,204,21,0.5)]" />
+
+                <h3 class="text-2xl font-bold text-yellow-400 mb-3">Personal Portfolio Website</h3>
+
+                <p class="text-gray-300 mb-6">
+                    A modern and responsive portfolio showcasing my skills, projects, and achievements with a
+                    galaxy-themed UI.
+                </p>
+
+                <div class="flex justify-center gap-4">
+                    <a href="https://github.com/Krish480/My-Portfolio" target="_blank"
+                        class="px-5 py-2 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-black hover:text-yellow-400 border border-yellow-400 transition-all duration-300">
+                        <i class="fa-brands fa-github mr-2"></i> GitHub
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="px-5 py-2 bg-transparent border border-yellow-400 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-link mr-2"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+
+
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section id="experience"
+        class="flex flex-col items-center justify-center px-6 md:px-16 py-20 text-white relative overflow-hidden">
+
+        <!-- Heading -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-3 tracking-wide">Experience</h2>
+            <div class="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Experience Card -->
+        <div
+            class="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg max-w-5xl w-full border border-yellow-400/30 fade-in hover:scale-[1.02] transition-transform duration-500">
+
+            <h3 class="text-2xl font-semibold text-white mb-2">Frontend Development Intern</h3>
+            <p class="text-yellow-400 font-medium mb-2">Unified Mentor | 1 Aug 2025 - 1 Nov 2025</p>
+            <p class="text-gray-300 leading-relaxed">
+                During my internship, I worked on creating modern, responsive user interfaces using
+                <span class="text-yellow-400 font-semibold">HTML</span>,
+                <span class="text-yellow-400 font-semibold">CSS</span>,
+                <span class="text-yellow-400 font-semibold">JavaScript</span>, and
+                <span class="text-yellow-400 font-semibold">React</span>.
+                I collaborated closely with the backend team for API integrations and implemented dynamic UI components.
+                Additionally, I contributed to my major project — <span class="text-yellow-400 font-semibold">Rudra
+                    Virtual AI Assistant</span> using Flask and ElevenLabs API.
+            </p>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education"
+        class=" flex flex-col items-center justify-center px-6 md:px-16 py-20  text-white relative overflow-hidden">
+
+        <!-- Heading -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-3 tracking-wide">Education</h2>
+            <div class="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Education Card -->
+        <div
+            class="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg max-w-5xl w-full border border-yellow-400/30 fade-in hover:scale-[1.02] transition-transform duration-500">
+
+            <h3 class="text-2xl font-semibold text-white mb-2">Master of Computer Applications (MCA)</h3>
+            <p class="text-yellow-400 font-medium mb-2">BIST (Bhopal), RGPV University | 2023 - 2025</p>
+            <p class="text-gray-300 leading-relaxed">
+                Pursuing MCA with a focus on <span class="text-yellow-400 font-semibold">Web Development</span>,
+                <span class="text-yellow-400 font-semibold">Cloud Computing</span>, and
+                <span class="text-yellow-400 font-semibold">Artificial Intelligence</span>.
+                Developed multiple interactive web projects and completed a major project —
+                <span class="text-yellow-400 font-semibold">Rudra Virtual AI Assistant</span>, integrating
+                <span class="text-yellow-400 font-semibold">Flask, ElevenLabs API</span>, and
+                <span class="text-yellow-400 font-semibold">OpenRouter (AI Models)</span>.
+            </p>
+        </div>
+    </section>
+
+
+
+
     <!-- Contact Section -->
-    <section id="contact" class="max-w-3xl mx-auto px-6 py-16">
-        <h2 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Contact Me</h2>
-        <form class="bg-gray-800 rounded-lg p-8 shadow-lg flex flex-col gap-4">
+    <section id="contact" class="relative py-20 px-6 text-white">
+        <div class="text-center mb-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-yellow-400 drop-shadow-[0_0_12px_rgba(250,204,21,0.7)]">
+                Contact Me
+            </h2>
+            <div class="w-24 h-1 bg-yellow-400 mx-auto mt-3 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.6)]"></div>
+        </div>
+
+        <form
+            class="max-w-5xl mx-auto bg-white/10 backdrop-blur-lg border border-yellow-400/30 rounded-2xl p-8 shadow-[0_0_25px_rgba(250,204,21,0.2)] flex flex-col gap-5">
             <input type="text" placeholder="Your Name" required
-                class="p-3 rounded bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                class="p-3 rounded bg-black/60 border border-yellow-400/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
             <input type="email" placeholder="Your Email" required
-                class="p-3 rounded bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                class="p-3 rounded bg-black/60 border border-yellow-400/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
             <textarea placeholder="Your Message" required rows="5"
-                class="p-3 rounded bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+                class="p-3 rounded bg-black/60 border border-yellow-400/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300"></textarea>
             <button type="submit"
-                class="bg-yellow-400 text-black font-bold py-2 rounded-lg hover:bg-black hover:text-yellow-400 transition-all duration-300">Send
-                Message</button>
+                class="bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-black hover:text-yellow-400 border-2 border-yellow-400 transition-all duration-300 shadow-[0_0_15px_rgba(250,204,21,0.4)] hover:shadow-[0_0_25px_rgba(250,204,21,0.7)]">
+                Send Message
+            </button>
         </form>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-yellow-400 text-black text-center py-6">
-        <p class="font-semibold">Made with ❤️ by Krishna Pandey © 2025</p>
-        <div class="flex justify-center gap-6 mt-3">
+    <footer class="bg-black/60 backdrop-blur-lg border-t border-yellow-400/20 py-8 text-center text-gray-300">
+        <p class="font-semibold text-yellow-400">Made with ❤️ by Krishna Pandey © 2025</p>
+        <div class="flex justify-center gap-6 mt-4">
             <a href="https://www.linkedin.com/in/krishñà-páñdey-609465295" target="_blank"
-                class="hover:text-gray-800"><i class="fab fa-linkedin text-3xl"></i></a>
-            <a href="https://github.com/Krish480" target="_blank" class="hover:text-gray-800"><i
+                class="hover:text-yellow-400 hover:scale-110 transition-all duration-300"><i
+                    class="fab fa-linkedin text-3xl"></i></a>
+            <a href="https://github.com/Krish480" target="_blank"
+                class="hover:text-yellow-400 hover:scale-110 transition-all duration-300"><i
                     class="fab fa-github text-3xl"></i></a>
         </div>
     </footer>
+
 
     <script src="script.js"></script>
 </body>

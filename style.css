@@ -1,131 +1,274 @@
- html {
-     scroll-behavior: smooth;
- }
+html,
+body {
+    height: auto;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+}
 
- .bubble {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     animation: waveFloat 4s ease-in-out infinite;
-     transition: transform 0.3s ease;
- }
+/* 🌌 Full Page Galaxy Parallax Background */
+.galaxy-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -10;
+    pointer-events: none;
+    background: radial-gradient(ellipse at bottom, #0b0f19, #000);
+}
 
- .bubble:hover {
-     transform: scale(1.15);
- }
+/* ✨ Stars Layer */
+.stars,
+.twinkling,
+.nebula {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+}
 
- /* Wave motion */
- @keyframes waveFloat {
-     0% {
-         transform: translateY(0);
-     }
+/* ⭐ Small Stars */
+.stars {
+    background: transparent url('/assets/stars.png') repeat;
+    animation: moveStars 180s linear infinite;
+    opacity: 0.35;
+}
 
-     25% {
-         transform: translateY(-14px);
-     }
+/* ✨ Twinkling Effect */
+.twinkling {
+    background: transparent url('/assets/twinkling.png') repeat;
+    animation: moveTwinkling 300s linear infinite;
+    opacity: 0.45;
+}
 
-     50% {
-         transform: translateY(0);
-     }
+/* 🌈 Nebula Glow */
+.nebula {
+    background: radial-gradient(ellipse at center, rgba(64, 0, 128, 0.25), transparent 70%),
+        radial-gradient(ellipse at bottom left, rgba(255, 0, 128, 0.15), transparent 70%),
+        radial-gradient(ellipse at bottom right, rgba(0, 128, 255, 0.15), transparent 70%);
+    animation: moveNebula 150s linear infinite;
+}
 
-     75% {
-         transform: translateY(14px);
-     }
+/* 🌠 Animations */
+@keyframes moveStars {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
 
-     100% {
-         transform: translateY(0);
-     }
- }
+    to {
+        transform: translate3d(-1000px, 1000px, 0);
+    }
+}
 
- /* Wave delay for sequence */
- .bubble:nth-child(1) {
-     animation-delay: 0s;
- }
+@keyframes moveTwinkling {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
 
- .bubble:nth-child(2) {
-     animation-delay: 0.2s;
- }
+    to {
+        transform: translate3d(1000px, -1000px, 0);
+    }
+}
 
- .bubble:nth-child(3) {
-     animation-delay: 0.4s;
- }
+@keyframes moveNebula {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
 
- .bubble:nth-child(4) {
-     animation-delay: 0.6s;
- }
+    to {
+        transform: translate3d(-500px, 500px, 0);
+    }
+}
 
- .bubble:nth-child(5) {
-     animation-delay: 0.8s;
- }
+#home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+    z-index: -1;
+}
 
- .bubble:nth-child(6) {
-     animation-delay: 1s;
- }
+.group:hover::before {
+    animation: pulseGlow 3s infinite ease-in-out;
+}
 
- .bubble:nth-child(7) {
-     animation-delay: 1.2s;
- }
+@keyframes pulseGlow {
 
- /* Colored glow only below each bubble (no bg) */
- .glow-html {
-     filter: drop-shadow(0 4px 12px rgba(255, 102, 0, 0.6));
- }
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
 
- .glow-css {
-     filter: drop-shadow(0 4px 12px rgba(210, 101, 246, 0.6));
- }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
 
- .glow-js {
-     filter: drop-shadow(0 4px 12px rgba(255, 255, 0, 0.5));
- }
 
- .glow-react {
-     filter: drop-shadow(0 4px 12px rgba(97, 218, 251, 0.6));
- }
 
- .glow-python {
-     filter: drop-shadow(0 4px 12px rgba(76, 175, 80, 0.6));
- }
 
- .glow-tailwind {
-     filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.6));
- }
+.bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: waveFloat 4s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
 
- .fade-in {
-     opacity: 0;
-     transform: translateY(20px);
-     animation: fadeInUp 1.2s ease-out forwards;
- }
+.bubble:hover {
+    transform: scale(1.15);
+}
 
- @keyframes fadeInUp {
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
+/* Wave motion */
+@keyframes waveFloat {
+    0% {
+        transform: translateY(0);
+    }
 
- /* Canging role animation */
+    25% {
+        transform: translateY(-14px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    75% {
+        transform: translateY(14px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.live-demo-btn:hover .btn-text::before {
+  content: "Work in Progress";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(250, 204, 21, 0.9);
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.live-demo-btn .btn-text {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+/* Wave delay for sequence */
+.bubble:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bubble:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.bubble:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.bubble:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+.bubble:nth-child(6) {
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(7) {
+    animation-delay: 1.2s;
+}
+
+/* Colored glow only below each bubble (no bg) */
+.glow-html {
+    filter: drop-shadow(0 4px 12px rgba(255, 102, 0, 0.6));
+}
+
+.glow-css {
+    filter: drop-shadow(0 4px 12px rgba(210, 101, 246, 0.6));
+}
+
+.glow-js {
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 0, 0.5));
+}
+
+.glow-react {
+    filter: drop-shadow(0 4px 12px rgba(97, 218, 251, 0.6));
+}
+
+.glow-python {
+    filter: drop-shadow(0 4px 12px rgba(76, 175, 80, 0.6));
+}
+
+.glow-tailwind {
+    filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.6));
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Canging role animation */
 #changing-role {
-  border-right: 2px solid #facc15; /* yellow blinking cursor */
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: middle; /* ✅ fix baseline misalignment */
-  line-height: 1.2; /* ensure consistent vertical centering */
-  margin-right: 4px; /* small gap before next text */
-  animation: blinkCursor 0.7s infinite;
-  text-shadow: 0px 4px 6px rgba(250, 204, 21, 0.7);
+    border-right: 2px solid #facc15;
+    /* yellow blinking cursor */
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    /* ✅ fix baseline misalignment */
+    line-height: 1.2;
+    /* ensure consistent vertical centering */
+    margin-right: 4px;
+    /* small gap before next text */
+    animation: blinkCursor 0.7s infinite;
+    text-shadow: 0px 4px 6px rgba(250, 204, 21, 0.7);
 
 }
 
 @keyframes blinkCursor {
-  0%, 100% {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #facc15;
-  }
+
+    0%,
+    100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #facc15;
+    }
 }
-
-
