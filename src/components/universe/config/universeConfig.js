@@ -1,0 +1,102 @@
+// 🪐 Universe Engine Configuration parameters
+
+export const universeConfig = {
+  camera: {
+    fov: 60,
+    near: 0.1,
+    far: 100,
+    defaultZ: 10,
+    scrollPanFactor: 6.0,
+    mouseTiltFactor: 2.2,
+    scrollSmoothFactor: 0.06,
+    mouseSmoothFactor: 0.05,
+  },
+  fog: {
+    enabled: true,
+    color: "#000000",
+    near: 1,
+    far: 100,
+  },
+  colors: {
+    nebulaPurple: "#6D28D9",
+    nebulaCyan: "#22D3EE",
+    spaceBlack: "#010104",
+    starCyan: "#22D3EE",
+    starGold: "#FACC15",
+    starWhite: "#FFFFFF",
+    blackHoleCore: "#FACC15",
+    blackHoleEdge: "#22D3EE",
+  },
+  quality: {
+    high: { particleMultiplier: 1.0, antialias: true, dpr: [1, 2] },
+    medium: { particleMultiplier: 0.7, antialias: true, dpr: [1, 1.5] },
+    low: { particleMultiplier: 0.4, antialias: false, dpr: [1, 1.2] },
+  },
+  particleCount: {
+    stars: { mobile: 3000, desktop: 8000 },
+    dust: { mobile: 400, desktop: 1200 },
+    shootingStars: { mobile: 1, desktop: 3 },
+  },
+  nebulaOpacity: 0.22,
+  scrollDepth: 6.0,
+  mouseStrength: 2.2,
+  
+  // Backwards compatible fields for current modules
+  stars: {
+    mobileCount: 3000,
+    desktopCount: 8000,
+    xSpan: 110,
+    ySpan: 220,
+    zSpan: 45,
+    zOffset: -20,
+    rotationSpeedY: 0.003,
+    rotationSpeedX: 0.001,
+  },
+  dust: {
+    mobileCount: 400,
+    desktopCount: 1200,
+    orbitRadiusMin: 1.6,
+    orbitRadiusMax: 9.6,
+    pullForce: 0.0003,
+    minAttractionRadius: 1.3,
+  },
+  shootingStars: {
+    mobileCount: 1,
+    desktopCount: 3,
+    spawnRangeX: 25,
+    spawnRangeY: 20,
+    spawnZ: -15,
+  },
+  galaxies: [
+    {
+      id: "galaxy-1",
+      position: [4.5, -9.0, -2.0],
+      color: "#22d3ee",
+      size: 1.1,
+      speed: 0.0015,
+    },
+    {
+      id: "galaxy-2",
+      position: [-4.5, -16.5, -3.0],
+      color: "#c084fc",
+      size: 0.9,
+      speed: -0.002,
+    },
+    {
+      id: "galaxy-3",
+      position: [3.5, -22.5, -1.5],
+      color: "#fdba74",
+      size: 1.2,
+      speed: 0.001,
+    },
+  ],
+  blackHole: {
+    coreColor: "#FACC15",
+    edgeColor: "#22D3EE",
+    eventHorizonRadius: 1.15,
+    einsteinRingRadiusMin: 1.2,
+    einsteinRingRadiusMax: 1.6,
+    accretionDiskRadiusMin: 1.3,
+    accretionDiskRadiusMax: 5.2,
+  },
+};

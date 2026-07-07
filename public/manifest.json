@@ -1,0 +1,21 @@
+{
+  "short_name": "Krishna Portfolio",
+  "name": "Krishna Pandey | Portfolio",
+  "icons": [
+    {
+      "src": "/images/Profile photo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/Profile photo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#010104",
+  "theme_color": "#010104",
+  "display": "standalone",
+  "orientation": "portrait"
+}

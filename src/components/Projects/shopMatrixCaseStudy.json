@@ -1,0 +1,205 @@
+{
+  "projectTitle": "ShopMatrix – Modern E-Commerce Platform",
+  "productTagline": "A production-grade, multi-role e-commerce platform and merchant dashboard orchestrating localized shop directories, global promotions, and secure cloud sync via Firebase.",
+  "projectOverview": {
+    "why": "ShopMatrix was created to digitize physical shopping malls and local retail clusters, enabling brick-and-mortar merchants to catalog their goods and run promotions online.",
+    "commerceProblems": "Solves the lack of localized directory indexing by structuring shops, product offers, floor arrangements, and ratings into a unified digital map.",
+    "betterExperience": "Provides a clean, filterable shopping interface with instant search, interactive price comparisons, and a merchant terminal featuring visual revenue charts."
+  },
+  "problemStatement": {
+    "description": "Physical retail merchants and local shop clusters lack accessible tools to advertise inventories, publish flash promotions, or sync floor locations with digital search systems. Existing commercial platforms are either too complex for small retailers or fail to reflect the directory layout of physical supermalls, causing disconnects between local buyers and merchant storefronts."
+  },
+  "solution": {
+    "description": "ShopMatrix addresses this disconnect through a multi-tier client interface. Customers gain access to interactive mall directories where they can sort by floor (Ground to 3rd), filter by category, browse discounted offers, and manage persistent carts. Merchants are equipped with a password-protected analytics control center built on Firebase Auth and Cloud Firestore, providing dashboard readouts, product listings, and sales charts."
+  },
+  "targetUsers": [
+    {
+      "role": "Customers",
+      "reason": "Allows them to locate specific shops, inspect floor positions, find active sales coupons, and order local commodities."
+    },
+    {
+      "role": "Small Businesses",
+      "reason": "Offers a low-cost, zero-maintenance platform to create digital storefronts and list inventories."
+    },
+    {
+      "role": "Online Merchants",
+      "reason": "Provides a streamlined product management system to add new arrivals and publish flash deals."
+    },
+    {
+      "role": "Retail Stores",
+      "reason": "Synchronizes physical layout floor guides with digital catalogs to drive customer foot traffic."
+    },
+    {
+      "role": "Entrepreneurs",
+      "reason": "Serves as a scalable template to test commercial concepts and evaluate customer engagement patterns."
+    }
+  ],
+  "businessValue": {
+    "digitalCommerce": "Enables physical vendors to establish a global digital footprint, increasing sales volumes.",
+    "productManagement": "Accelerates catalog updates through real-time Firestore database synchronization.",
+    "inventoryHandling": "Enables managers to update stock statuses, change prices, and tag promotions instantly.",
+    "customerEngagement": "Builds customer loyalty by displaying active shop-wise discounts and product ratings.",
+    "responsiveShopping": "Ensures a consistent shopping experience across mobile, tablet, and desktop interfaces."
+  },
+  "featureList": {
+    "customerFeatures": [
+      {
+        "title": "Interactive Mall Directory",
+        "description": "Browse and filter physical store listings by category, floor level, and ratings."
+      },
+      {
+        "title": "Instant Product Comparison",
+        "description": "Compare prices and features across multiple merchant offerings to find the best deals."
+      }
+    ],
+    "merchantFeatures": [
+      {
+        "title": "Revenue Dashboard",
+        "description": "Monitors business performance and metrics using responsive charts."
+      },
+      {
+        "title": "Inventory CRUD Manager",
+        "description": "Form controls to register new products, update pricing, and upload product imagery."
+      }
+    ],
+    "authenticationFeatures": [
+      {
+        "title": "Firebase Authentication",
+        "description": "Handles secure login and registration flows for customers and merchants with state persistence."
+      }
+    ],
+    "commerceFeatures": [
+      {
+        "title": "Promotional Engine",
+        "description": "Manages storewide discounts, displaying active offers, percentage cuts, and expiration dates."
+      }
+    ],
+    "responsiveFeatures": [
+      {
+        "title": "Fluid UI Scaling",
+        "description": "Implements responsive grids and navigation drawers that adjust dynamically to any screen size."
+      }
+    ],
+    "futureFeatures": [
+      {
+        "title": "Integrated Payments",
+        "description": "Enables checkout payments and deposits using Stripe or razorpay gateways."
+      },
+      {
+        "title": "Live Map Navigation",
+        "description": "Renders vector mall maps showing interactive routes to selected floors and shops."
+      }
+    ]
+  },
+  "technicalArchitecture": {
+    "frontend": "Tailwind CSS layouts utilizing CSS variables for theme modifications and standard HTML5 templates.",
+    "backend": "Serverless backend architecture powered by Firebase Client SDKs.",
+    "database": "Cloud Firestore storing relational document collections for users, products, shops, and orders.",
+    "authentication": "Firebase Authentication handling secure user verification and session management.",
+    "storage": "Local filesystem image uploads with support for cloud image hosting configurations.",
+    "deployment": "Optimized static deployment to Vercel/Netlify for fast globally distributed loading speeds."
+  },
+  "techStack": {
+    "languages": ["HTML5", "CSS3", "JavaScript (ES6+)", "JSON"],
+    "frameworks": ["Vanilla JS (No-Framework Architecture)"],
+    "libraries": ["Tailwind CSS v4 Engine", "Chart.js", "FontAwesome Icons"],
+    "database": ["Cloud Firestore / Firebase Realtime DB"],
+    "authentication": ["Firebase Authentication"],
+    "cloud": ["Firebase Hosting", "Google Cloud Platform"],
+    "deployment": ["Vercel Edge Platform", "Firebase Hosting Services"],
+    "developerTools": ["Tailwind compiler", "Git & GitHub", "Vite Static Server"]
+  },
+  "userWorkflow": [
+    "User opens ShopMatrix and lands on the interactive directory.",
+    "User browses shops or uses global search to find products.",
+    "User filters listings by category or floor guide.",
+    "User compares product costs, ratings, and active coupons.",
+    "User adds items to cart -> Promoted to login if unauthenticated.",
+    "User registers or logs in via Firebase Auth.",
+    "User enters checkout flow, reviews order totals, and confirms booking.",
+    "Order records save to Firestore database."
+  ],
+  "merchantWorkflow": [
+    "Merchant opens the merchant portal and logs in securely.",
+    "System validates credentials and loads the merchant session.",
+    "Merchant reviews dashboard stats and revenue charts (Chart.js).",
+    "Merchant accesses Product Manager to create, update, or remove inventory.",
+    "Merchant adds discount tags and sets promo expiration dates.",
+    "Merchant tracks customer orders and manages stock quantities."
+  ],
+  "databaseStructure": {
+    "users": "uid (STRING PK), name (STRING), email (STRING), role (STRING: merchant/customer), created_at (TIMESTAMP)",
+    "shops": "id (NUMBER PK), name (STRING), category (STRING), floor (STRING), desc (STRING), offer (OBJECT: text, percent, until), rating (NUMBER)",
+    "products": "id (STRING PK), merchant_id (STRING FK), name (STRING), price (NUMBER), description (STRING), image_url (STRING), inventory_count (NUMBER)",
+    "orders": "id (STRING PK), customer_id (STRING FK), items (ARRAY), total (NUMBER), status (STRING), created_at (TIMESTAMP)"
+  },
+  "folderStructure": {
+    "user/": "Customer dashboard pages managing profiles, orders, and wishlist collections.",
+    "merchant/": "Merchant dashboard layouts, revenue analytics charts, and product inventory managers.",
+    "admin/": "Administrative routing tools overseeing global mall layouts, floors, and categories.",
+    "components/": "Reusable HTML component blocks injected dynamically via include scripts.",
+    "css/": "Styling directories compiling Tailwind utilities and dark mode theme modifications.",
+    "js/": "Core script logic containing controllers, charting scripts, and Firebase connection configs."
+  },
+  "componentArchitecture": {
+    "navbar": "Fixed navigation bar with global search, cart widgets, and responsive drawer toggles.",
+    "hero": "Main showcase slide featuring seasonal promotions and category pills.",
+    "categories": "Horizontal pill buttons allowing users to filter listings instantly.",
+    "productCards": "Grid items rendering item details, discounts, ratings, and location badges.",
+    "cart": "Side drawer panel displaying active orders, quantities, and checkout buttons.",
+    "authentication": "Unified login and registration modals powered by Firebase Authentication.",
+    "dashboard": "Analytical grids plotting weekly sales, active listings, and client metrics.",
+    "footer": "Contact section displaying operating hours, location details, and social links."
+  },
+  "performanceOptimizations": {
+    "imageOptimization": "Uses compressed image assets and defines fixed dimensions to prevent layout shifts.",
+    "lazyLoading": "Defers loading of below-the-fold store cards to optimize page initialization speeds.",
+    "codeSplitting": "Separates customer and merchant scripts to keep JS bundle sizes small.",
+    "firebaseQueries": "Limits database queries to active category collections to reduce Firestore read costs."
+  },
+  "security": {
+    "authGuards": "Verifies Firebase user states on page load, redirecting unauthorized traffic to login panels.",
+    "protectedRoutes": "Secures merchant dashboards behind strict authentication state checks.",
+    "firestoreRules": "Implements rules in Firestore to restrict document modifications to verified creators.",
+    "sanitization": "Uses textContent bindings to render user inputs, blocking potential cross-site scripting (XSS) hazards."
+  },
+  "responsiveStrategy": {
+    "viewports": "Grids scale dynamically from single columns on mobile to multi-column layouts on wide displays.",
+    "touchTargets": "Pads interactive buttons to at least 44px to accommodate touch actions on mobile screens.",
+    "navigation": "Collapsible side drawers and mobile search fields to maximize active screen space."
+  },
+  "uiUxDesignDecisions": {
+    "theme": "Sleek, modern design with custom CSS variables for light/dark mode persistence.",
+    "typography": "Outfit for clean headings and Inter for highly readable product descriptions.",
+    "visualHierarchy": "Bold promotion badges, distinct card boundaries, and clear call-to-actions to drive user conversions."
+  },
+  "challenges": [
+    {
+      "challenge": "Real-Time Firestore State Sync",
+      "solution": "Implemented Firestore onSnapshot listeners to capture database changes, ensuring product lists and counts stay updated without page reloads."
+    },
+    {
+      "challenge": "Client-Side Routing Guards",
+      "solution": "Configured auth state change listeners that check session values, redirecting unauthenticated users to the login screen before pages render."
+    },
+    {
+      "challenge": "Dynamic Template Injection",
+      "solution": "Built a custom component compiler (`include-components.js`) that fetches and injects templates, reducing duplicate HTML across files."
+    }
+  ],
+  "futureRoadmap": [
+    "Integrate Stripe payments for direct online checkouts.",
+    "Build interactive floor plan navigation maps using SVG overlays.",
+    "Implement automated inventory notifications for merchants when stock runs low."
+  ],
+  "recruiterHighlights": {
+    "frontend": "Constructed responsive frontends using Tailwind CSS grid systems and CSS variables.",
+    "firebase": "Integrated Firebase Authentication, Cloud Firestore, and hosting environments.",
+    "auth": "Implemented secure auth flows and route guards for multiple user roles.",
+    "database": "Structured normalized document databases to manage store details, product listings, and user records.",
+    "commerce": "Designed a complete shopping workflow, from catalog searches to cart management and checkout logs.",
+    "performance": "Optimized performance through deferred scripting, template caching, and database query limiters."
+  },
+  "projectStory": "ShopMatrix was created to help local physical retail vendors establish a digital footprint. We built a structured directory system that matches physical store layouts, allowing users to search by floor level and category. To keep things lightweight, we built the interface using EJS-style HTML components and Tailwind CSS, connecting them directly to Firebase services. Incorporating Firestore real-time updates and Chart.js analytics completed the build, creating a functional, multi-role e-commerce platform.",
+  "portfolioSummary": "A multi-role e-commerce platform and merchant dashboard built with Tailwind CSS, Vanilla JavaScript, and Firebase. Features localized shop directories with floor guide filters, interactive product comparisons, real-time Firestore database synchronization, and an analytical merchant dashboard powered by Chart.js."
+}

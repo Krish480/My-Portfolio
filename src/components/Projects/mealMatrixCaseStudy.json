@@ -1,0 +1,219 @@
+{
+  "projectTitle": "MealMatrix – Catering Reservation & Food Ordering Platform",
+  "productTagline": "A production-grade, hybrid cloud catering management platform featuring secure authentication, dynamic menus, and unified administrative controls.",
+  "projectOverview": {
+    "why": "MealMatrix was created to bridge the digital gap in the catering and food service industry, replacing offline phone bookings and fragmented message boards with a streamlined online portal.",
+    "businessProblem": "Traditional food services struggle to coordinate event timelines with exact menu requirements. MealMatrix unifies this by syncing live customer cart assemblies, checkout events, and kitchen delivery schedules into one system.",
+    "usefulness": "Catering businesses gain an automated order flow that captures guest counts, item preferences, and customer contact records, allowing managers to allocate ingredients and staff hours precisely."
+  },
+  "problemStatement": {
+    "description": "Traditional catering businesses suffer from high administrative overhead. Coordinating custom menus, tracking guest-specific orders, and managing reservation schedules manually via spreadsheets frequently results in communication breakdowns, kitchen order errors, and loss of user records. Additionally, standard online ordering systems are built for quick-delivery restaurant tables rather than the structured, high-volume needs of catering events."
+  },
+  "solution": {
+    "description": "MealMatrix digitizes the entire transaction pipeline. Customers gain access to a secure account where they can browse items, customize order quantities, build a persistent shopping cart (synced with their user profile database), and checkout with automatic receipt rendering. Managers are equipped with a protected Administrative Dashboard that serves as a single source of truth for updating menu items, managing product imagery, and advancing order statuses in real-time."
+  },
+  "targetUsers": [
+    {
+      "role": "Restaurant Owners",
+      "reason": "Allows them to expand their standard table services into high-margin corporate catering and group events."
+    },
+    {
+      "role": "Catering Businesses",
+      "reason": "Provides a digital portal to publish catering catalogs, receive client reservations, and coordinate deliveries."
+    },
+    {
+      "role": "Customers",
+      "reason": "Provides a simple shopping interface to organize meal plans and place party orders without phone calls."
+    },
+    {
+      "role": "Event Organizers",
+      "reason": "Enables them to select specific buffet counts and customize menu plans for large gatherings."
+    },
+    {
+      "role": "Administrators",
+      "reason": "Equips operations staff to manage menu configurations, edit prices, upload product graphics, and transition order stages."
+    }
+  ],
+  "businessValue": {
+    "timeSaving": "Slashes time spent drafting custom manual proposals by showing standardized packages online.",
+    "digitalBooking": "Automates the client acquisition process through 24/7 online cart assembly and checkouts.",
+    "orderManagement": "Centralizes all active bookings, letting administrators track order pipelines and mark items complete.",
+    "businessAutomation": "Eliminates administrative overhead by automatically linking users, sessions, and active carts in the backend.",
+    "customerExperience": "Delivers a premium, frictionless food service experience with custom profiles and order histories."
+  },
+  "featureList": {
+    "customerFeatures": [
+      {
+        "title": "Interactive Food Menu",
+        "description": "Browse categorised menu lists with real-time pricing and dynamic detail views."
+      },
+      {
+        "title": "Persistent Shopping Cart",
+        "description": "Carts are saved directly inside user records, persisting across device sessions and reloads."
+      }
+    ],
+    "adminFeatures": [
+      {
+        "title": "Operations Dashboard",
+        "description": "Central dashboard monitoring product catalogs, database counts, and order dispatch cycles."
+      },
+      {
+        "title": "Product CRUD Engine",
+        "description": "Form controls to add new menu items, update active price structures, and manage categories."
+      }
+    ],
+    "reservationFeatures": [
+      {
+        "title": "Catering Scheduler",
+        "description": "Submits checkout timestamps, event locations, and quantity specifications directly to the database."
+      }
+    ],
+    "orderingFeatures": [
+      {
+        "title": "Dynamic Checkout Pipeline",
+        "description": "Aggregates cart tallies, applies discounts, calculates totals, and logs structured order receipts."
+      }
+    ],
+    "authenticationFeatures": [
+      {
+        "title": "Firebase Auth Integration",
+        "description": "Secure signups and logins handled via Firebase Client SDK and verified on server sessions."
+      }
+    ],
+    "managementFeatures": [
+      {
+        "title": "Multer Image Uploads",
+        "description": "Disk storage management system for uploading and saving custom product images and user avatars."
+      }
+    ],
+    "responsiveFeatures": [
+      {
+        "title": "Mobile Drawer Navigation",
+        "description": "Collapsible sidebar and cart sheets tailored for smooth browsing on small screens."
+      }
+    ],
+    "futureFeatures": [
+      {
+        "title": "Stripe Portal",
+        "description": "Secure credit card processing, digital receipts, and deposit holding facilities."
+      },
+      {
+        "title": "Live Status SMS",
+        "description": "Dispatches text alerts to clients as their orders transition from 'Pending' to 'Dispatched'."
+      }
+    ]
+  },
+  "technicalArchitecture": {
+    "frontend": "EJS templates styled with Tailwind CSS, custom modern web typography, and client-side cart logic.",
+    "backend": "Node.js with Express.js server utilizing session-file-store for server-side state persistence.",
+    "database": "Hybrid system: Firebase Firestore cloud database (for distributed queries) and local JSON data storage (for low-latency config caching).",
+    "authentication": "Firebase Authentication Client SDK coupled with Express session verification middlewares.",
+    "storage": "Local filesystem file uploads handled via Multer storage engines and served dynamically.",
+    "routing": "Express Routers dividing customer routes (/), authentication (/auth), and admin actions (/admin).",
+    "apiLayer": "REST APIs handling cart mutations (add, update, remove) and order submissions.",
+    "deployment": "Containerized Node.js environment deployable to Vercel, Render, or Firebase Hosting."
+  },
+  "techStack": {
+    "languages": ["JavaScript (ES6+)", "HTML5", "CSS3", "JSON"],
+    "frameworks": ["Express.js (v5.1.0)", "Node.js (v22.x)"],
+    "libraries": ["EJS Templates", "Dotenv", "Multer", "UUID", "session-file-store"],
+    "database": ["Firebase Firestore", "Relational JSON Tables"],
+    "authentication": ["Firebase Authentication"],
+    "hosting": ["Vercel", "Firebase Hosting"],
+    "developerTools": ["Nodemon", "Tailwind CSS v4 Engine", "Git & GitHub"]
+  },
+  "userWorkflow": [
+    "User opens MealMatrix landing page.",
+    "User browses categorized catering menus.",
+    "User adds items to their shopping cart.",
+    "User clicks checkout -> Redirected to /auth/login if unauthenticated.",
+    "User authenticates via Firebase Auth -> Session created on server.",
+    "User reviews cart tallies, enters delivery details, and places order.",
+    "System records order in database and renders order success page.",
+    "Order instantly appears in the Admin Dashboard queue."
+  ],
+  "adminWorkflow": [
+    "Admin logs in via secure dashboard login route.",
+    "System checks req.session.isAdmin flag.",
+    "Admin accesses metrics dashboard (total items, total orders).",
+    "Admin navigates to Menu Management -> Creates, edits, or deletes food items (uploads photos via Multer).",
+    "Admin reviews Order queue -> Clicks to view individual order details and logs.",
+    "Admin updates order status -> Order timeline logs update automatically."
+  ],
+  "databaseStructure": {
+    "users": "id (UID), email (VARCHAR), name (VARCHAR), phone (VARCHAR), address (TEXT), gender (VARCHAR), avatar (VARCHAR), cart (ARRAY of items)",
+    "orders": "id (UUID), customer (OBJECT: name, email, phone), address (TEXT), items (ARRAY), total (NUMBER), status (VARCHAR), history (ARRAY of status changes)",
+    "menuItems": "id (UUID), name (VARCHAR), price (NUMBER), description (TEXT), category (VARCHAR), offer (VARCHAR), imageUrl (VARCHAR)"
+  },
+  "folderStructure": {
+    "config/": "Contains Firebase Client SDK configurations and initialization scripts.",
+    "middlewares/": "Houses auth guards ensuring admin-only permissions and customer login states.",
+    "routes/": "Express routes mapping auth procedures, order processing, and administrative dashboards.",
+    "public/": "Static assets folder serving uploaded images, product thumbnails, and JSON databases.",
+    "views/": "EJS templates divided into pages (dashboard, cart, products) and reusable partials (header, footer).",
+    "sessions/": "Persistent server session files managed by session-file-store."
+  },
+  "componentArchitecture": {
+    "navbar": "Fixed navigation bar containing authentication links, user profile shortcuts, and live cart item counts.",
+    "hero": "Aesthetically rich showcase section displaying catering promos and search controls.",
+    "menu": "Grid catalog of dishes with filter badges, pricing info, and 'Add to Cart' triggers.",
+    "cart": "Visual drawer displaying added food items, sub-totals, and checkout triggers.",
+    "checkout": "Responsive form gathering event details, guest numbers, address, and dispatch dates.",
+    "reservationForm": "Dedicated panel scheduling party halls, catering staff counts, and buffet timings.",
+    "dashboard": "Client profile section displaying avatar configurations, contact forms, and past order history.",
+    "adminPanel": "Administrative control center managing active menu items and reviewing order timelines.",
+    "footer": "Bottom deck housing site links, social handles, and business hours."
+  },
+  "performanceOptimizations": {
+    "lazyLoading": "Deferred rendering of high-resolution product thumbnails to optimize page load speeds.",
+    "sessionCaching": "Caches cart calculations inside user records, preventing repetitive query requests on reload.",
+    "socketRejection": "Uses local JSON buffers during development to bypass heavy cloud API costs.",
+    "assetCompression": "Enforces 2MB upload limits on user avatars via Multer limits to optimize disk storage space."
+  },
+  "security": {
+    "routeGuards": "Express middlewares restricting /admin paths to authenticated admin sessions.",
+    "passwords": "Delegates user password storage and password recovery flows to Firebase Authentication.",
+    "uploadSafety": "Enforces UUID re-naming on uploaded image files, preventing shell script injection risks.",
+    "sessionHijackProtection": "Uses HTTP-Only secure cookies signed with system keys to handle session tokens."
+  },
+  "responsiveStrategy": {
+    "viewports": "Tailored grids that scale dynamically from mobile viewports (1 column) up to widescreen desktop layouts (4 columns).",
+    "touchTargets": "Generous interactive margins, click paddings, and button boundaries complying with accessibility standards.",
+    "drawers": "Collapsible panels that slide in off-screen, maintaining clean space on mobile screens."
+  },
+  "uiUxDesignDecisions": {
+    "theme": "Sleek, warm restaurant theme featuring high-contrast text and warm accent colors that evoke culinary professionalism.",
+    "typography": "Outfit for clean modern headings and Inter for highly readable product descriptions.",
+    "layout": "Grid-based modular cards, clear structural dividers, and persistent bottom-right floating cart widgets."
+  },
+  "challenges": [
+    {
+      "challenge": "State Synchronization of Customer Carts",
+      "solution": "Solved by synchronizing frontend cart states with a server-side route. Every cart mutation updates the user's JSON database file immediately, ensuring they don't lose items when switching from mobile to desktop."
+    },
+    {
+      "challenge": "Secure Image Assets Management",
+      "solution": "Configured a local disk storage engine using Multer. Uploaded files are verified, filtered by file extensions (.png, .jpg), and dynamically renamed using v4 UUIDs, resolving conflicting filename errors."
+    },
+    {
+      "challenge": "Session Locking & Persistence across Server Restarts",
+      "solution": "Integrated session-file-store, which writes active Express sessions directly to a secure local folder, ensuring clients stay logged in even during backend restarts."
+    }
+  ],
+  "futureRoadmap": [
+    "Integrate Stripe API for online reservation payment deposits.",
+    "Add Twilio SMS integration to notify customers when catering vans leave the kitchen.",
+    "Implement a dynamic table layout booking engine for physical venue reservations.",
+    "Design a seasonal coupon management engine on the Admin console."
+  ],
+  "recruiterHighlights": {
+    "fullStack": "Demonstrates end-to-end engineering, integrating templates, routing engines, disk storage, and state management.",
+    "backend": "Architected clean Express.js servers with route isolation, session configurations, and custom controllers.",
+    "rest": "Builds predictable REST APIs for user cart updates, item deletions, and order submissions.",
+    "auth": "Demonstrates security integration using Firebase Authentication alongside Node.js sessions.",
+    "database": "Integrates hybrid data stores: handling complex nested JSON objects and configuring document databases.",
+    "dashboard": "Designs multi-functional admin control panels monitoring real-time operations and product states."
+  },
+  "projectStory": "MealMatrix was created to replace traditional paper-and-clipboard booking methods used by local event caterers. The engineering journey began by mapping out customer-to-admin workflows. Node.js with Express was selected as the backend due to its excellent middleware support. To keep account security solid without creating heavy database queries for development, a hybrid strategy was chosen: Firebase Auth handles credential verification, while server-side sessions and structured JSON files handle cart data and orders. The interface was optimized using EJS and clean Tailwind grids, creating a fully functioning platform that caterers can immediately use to manage their bookings.",
+  "portfolioSummary": "A production-ready catering reservation and online ordering system built on Node.js, Express, and EJS, using Firebase Authentication for secure access. Features a persistent cart pipeline, image uploads via Multer, and a secure Admin Dashboard where managers can edit catalogs, update pricing, and track order histories in real-time."
+}

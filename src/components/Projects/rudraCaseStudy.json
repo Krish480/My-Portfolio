@@ -1,0 +1,250 @@
+{
+  "projectTitle": "Rudra AI Virtual Assistant",
+  "productTagline": "Next-generation, voice-activated AI companion with real-time text-to-speech, persistent SQL memories, and low-latency LLM orchestration.",
+  "projectOverview": {
+    "what": "Rudra 2.0 is an advanced, high-performance conversational AI assistant designed to act as a highly tailored virtual companion, offering natural voice interactions, context-rich conversations, and persistent memory across user sessions.",
+    "why": "Built to solve the lack of long-term statefulness in traditional chat interfaces, Rudra acts as a testbed for next-generation personal assistant features: extracting context from users' messages on the fly and remembering it naturally.",
+    "who": "It serves developers, professionals, and students who need a stateful assistant that remembers their work projects, learning goals, names, and preferences without requiring manual context re-injection.",
+    "difference": "Unlike typical chatbots that start with a blank slate every session or rely on bloated semantic vector databases, Rudra utilizes a lightweight, real-time background LLM extraction worker that saves structured personal telemetry to a relational database, blending memory lookup with conversational state."
+  },
+  "problemStatement": {
+    "description": "Standard conversational interfaces suffer from 'session amnesia'—forgetting user context the moment a session closes. Solving this via vector embeddings (RAG) is computationally expensive, introduces high token latencies, and is overly complex for storing basic personal settings (e.g., 'prefers Python over JS'). Developers need a lightweight, low-latency relational model to persist user preferences and facts dynamically without degrading the direct response speed of the LLM."
+  },
+  "solution": {
+    "description": "Rudra solves session amnesia through a dual-threaded pipeline: a fast main thread that generates LLM chat completions, and a separate background worker that asynchronously extracts user traits (name, goal, interest, topic, preference). The extracted facts are saved via MySQL UPSERT queries. On subsequent chats, the assistant automatically loads these traits and prepends them as [USER PROFILE MEMORY] inside the system prompt, providing instant hyper-personalization at 0ms latency impact to the user."
+  },
+  "targetUsers": [
+    {
+      "role": "Developers",
+      "reason": "Saves code stack preferences, deployment configurations, and project scopes, ensuring the AI can answer programming questions aligned with their specific technology stack."
+    },
+    {
+      "role": "Students",
+      "reason": "Tracks active courses, assignment deadlines, and topics of interest to personalize study plans and explanations over time."
+    },
+    {
+      "role": "Professionals",
+      "reason": "Maintains context on business objectives, client projects, and daily tasks to serve as an intelligent productivity companion."
+    },
+    {
+      "role": "General Users",
+      "reason": "Allows natural speech interactions for home tasks, reminders, and casual dialogue with an assistant that feels humanly attentive."
+    }
+  ],
+  "businessValue": {
+    "retention": "Increases user retention as the assistant becomes progressively more valuable and tailored to the individual the more they converse.",
+    "costEfficiency": "Slashes database search latency and index maintenance costs compared to vector-database storage models.",
+    "scalability": "Employs an asynchronous, non-blocking background queue that separates memory extraction from response delivery, maintaining a highly scalable execution loop."
+  },
+  "featureList": {
+    "coreFeatures": [
+      {
+        "title": "Stateful Chat Canvas",
+        "description": "Multi-session conversation history panel supporting title auto-generation, search logs, and clean session isolation."
+      },
+      {
+        "title": "Markdown Engine",
+        "description": "Beautiful rendering of code syntax highlighting, structured tables, headers, and bulleted logs."
+      }
+    ],
+    "aiFeatures": [
+      {
+        "title": "Adaptive Memory Extraction",
+        "description": "Background LLM analyzer that identifies personal facts from natural text and updates user profile schemas."
+      },
+      {
+        "title": "Contextual System Injector",
+        "description": "Merges long-term memories with chronological session history (last 10 messages) to provide high-fidelity chat prompts."
+      }
+    ],
+    "voiceFeatures": [
+      {
+        "title": "ElevenLabs TTS Stream",
+        "description": "High-fidelity, low-latency multilingual speech synthesizer delivering audio buffers dynamically."
+      },
+      {
+        "title": "Web Speech Recognition",
+        "description": "Hands-free, real-time voice capture utilizing native browser microphone streaming APIs."
+      }
+    ],
+    "productivityFeatures": [
+      {
+        "title": "Auto-Title Generation",
+        "description": "Analyzes the initial message of a conversation and generates a clean, concise, 4-word title automatically."
+      }
+    ],
+    "securityFeatures": [
+      {
+        "title": "JWT Session Shield",
+        "description": "Protected client-side routes and backend API endpoints authenticated via JSON Web Tokens."
+      },
+      {
+        "title": "Cryptographic Hashing",
+        "description": "User password protection using bcryptjs hashing techniques."
+      }
+    ],
+    "futureFeatures": [
+      {
+        "title": "Multi-Modal Vision Engine",
+        "description": "Real-time image uploads, whiteboard parsing, and design wireframe analysis."
+      },
+      {
+        "title": "Local Llama.cpp Node",
+        "description": "Enables 100% offline local inference on edge devices for high-privacy client sectors."
+      }
+    ]
+  },
+  "technicalArchitecture": {
+    "frontend": "Next.js 16 & React 19 Client with TailwindCSS v4 and CSS variables custom animations.",
+    "backend": "Next.js API Routes (Node.js runtime environment) utilizing async middleware handlers.",
+    "database": "MySQL relational database storing structured tables for users, conversations, messages, and memories.",
+    "authentication": "JSON Web Tokens (JWT) verified via HTTP headers, and bcryptjs for password hashing.",
+    "storage": "Persistent relational message history, linked through conversation IDs and user IDs.",
+    "apiLayer": "REST API endpoints routing auth actions, conversation logs, message lists, and audio byte outputs.",
+    "deployment": "Optimized Vercel deployment with edge routes and external hosted SQL database clusters.",
+    "aiLayer": "OpenRouter API integration orchestrating free-tier and premium LLM endpoints with custom latency budgets.",
+    "voiceLayer": "ElevenLabs API client-side binary streaming + browser Web Speech recognition engine."
+  },
+  "techStack": {
+    "languages": ["JavaScript (ES6+)", "SQL", "HTML5", "CSS3"],
+    "frameworks": ["Next.js (v16.1.6)", "React (v19.2.3)"],
+    "libraries": ["Axios", "Bcryptjs", "JSONWebToken", "MySQL2", "ElevenLabs Client"],
+    "database": ["MySQL / MariaDB"],
+    "authentication": ["JWT Sessions"],
+    "cloud": ["Render", "Vercel"],
+    "deployment": ["Vercel Edge Platform"],
+    "developerTools": ["ESLint", "Git & GitHub", "Tailwind CSS v4 Engine"],
+    "animation": ["CSS Transitions", "Framer Motion"],
+    "ai": ["OpenRouter API", "ElevenLabs Multilingual v2"]
+  },
+  "folderStructure": {
+    "src/app": "Vite-style app directory containing frontend layouts, page bundles, and route endpoints.",
+    "src/app/api": "Secure serverless backend API route handlers for chat, voice, authentication, and conversations.",
+    "src/lib": "Core system helper code including database connection pool (db.js) and JWT validation (auth.js).",
+    "src/components": "Modular, reusable React components split into layout, sidebar, chat, and markdown sub-folders.",
+    "src/styles": "Global CSS files declaring theme variables and custom styling structures."
+  },
+  "applicationWorkflow": [
+    "User loads page -> Check JWT in localStorage -> If empty redirect to /login.",
+    "User clicks 'New Chat' -> POST /api/conversations created in DB -> Load blank chat area.",
+    "User types message -> Appended immediately to UI states -> POST message & conversationId to /api/chat.",
+    "Backend validates token -> Authenticates user ID -> Triggers database query to fetch last 10 messages and memories.",
+    "Backend spawns async background job to extract new memories from user message.",
+    "Backend compiles prompt with user facts -> Dispatches payload to OpenRouter API.",
+    "OpenRouter replies -> AI reply saved to MySQL messages table -> JSON response returned to frontend.",
+    "Frontend renders reply in scroll area -> User triggers voice playback."
+  ],
+  "aiWorkflow": [
+    "User message arrives at API.",
+    "Background worker prompts LLM to scan for names, goals, or preferences -> Returns JSON array.",
+    "Worker checks SQL table: if type exists, updates; else, inserts.",
+    "Main thread queries memories -> Injects context to system prompt.",
+    "Prompt sent to model -> Generates formatted Markdown completion.",
+    "Completion stored in database and returned as response."
+  ],
+  "databaseStructure": {
+    "users": "id (INT AUTO_INCREMENT PK), username (VARCHAR UNIQUE), password (VARCHAR), created_at (TIMESTAMP)",
+    "conversations": "id (INT AUTO_INCREMENT PK), user_id (INT FK), title (VARCHAR), created_at (TIMESTAMP)",
+    "messages": "id (INT AUTO_INCREMENT PK), user_id (INT FK), conversation_id (INT FK), role (VARCHAR), content (TEXT), created_at (TIMESTAMP)",
+    "memories": "id (INT AUTO_INCREMENT PK), user_id (INT FK), memory_type (VARCHAR), content (TEXT), created_at (TIMESTAMP), updated_at (TIMESTAMP)"
+  },
+  "apiDocumentation": [
+    {
+      "method": "POST",
+      "endpoint": "/api/auth/register",
+      "description": "Registers a new user; hashes password via bcryptjs and returns status."
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/auth/login",
+      "description": "Validates credentials; issues JWT token signed with user metadata."
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/chat",
+      "description": "Saves message, triggers memory worker, requests LLM completion, and stores response."
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/voice",
+      "description": "Dispatches text payload to ElevenLabs TTS and streams raw audio/mpeg bytes back."
+    },
+    {
+      "method": "GET",
+      "endpoint": "/api/conversations",
+      "description": "Lists all conversation logs owned by the authenticated user."
+    },
+    {
+      "method": "GET",
+      "endpoint": "/api/messages/[id]",
+      "description": "Retrieves message history for the specified conversation ID."
+    }
+  ],
+  "componentArchitecture": {
+    "reusable": ["Button", "Input", "Loader", "Icon"],
+    "layouts": ["Header", "Sidebar", "ChatArea", "ChatInput"],
+    "hooks": ["useAuth", "useChat", "useSpeech"],
+    "contexts": ["ThemeContext", "AuthContext"],
+    "utilities": ["db.js (connection pool)", "auth.js (JWT verify)"]
+  },
+  "performanceOptimization": {
+    "lazyLoading": "Deferred component loading using dynamic imports to optimize script bundle footprint.",
+    "asyncJobSpawning": "Separates memory extraction pipeline from response lifecycle, saving over 1500ms of user-facing latency.",
+    "databasePooling": "Uses mysql2 connection pools to reuse connection sockets, avoiding overhead from spawning new database handshakes.",
+    "arrayBufferStreaming": "Fetches audio chunks as an arrayBuffer and plays it through native audio decoding pipelines for lag-free TTS."
+  },
+  "security": {
+    "hashing": "Passwords hashed with salt rounds using bcryptjs, securing credentials against database breaches.",
+    "tokens": "Stateless sessions governed by JSON Web Tokens signed with secret keys.",
+    "routeGuards": "Middleware-locked subfolders redirecting unauthenticated traffic to security logs.",
+    "parameterSanitization": "SQL queries written strictly with parameterized placeholders (`?`) to prevent SQL Injection exploits."
+  },
+  "responsiveDesign": {
+    "breakpoints": "Mobile (<640px), Tablet (<768px), Laptop (<1024px), Desktop (>=1024px).",
+    "drawerNav": "Collapsible drawer sidebar to maximize active chat viewport real estate on small touch interfaces.",
+    "inputs": "Clamped font sizes and input paddings ensuring keyboard overlays do not obstruct text lines."
+  },
+  "uiUxDecisions": {
+    "theme": "Deep cosmic aesthetic using dark colors (#010104) and glassmorphism elements to align with the futuristic sci-fi visual code.",
+    "typography": "Plus Jakarta Sans for body and headings, with monospace accents for diagnostic telemetry logs.",
+    "animation": "Framer Motion transitions, scale presses, hover highlights, and subtle message bubble cascades to feel tactile."
+  },
+  "challenges": [
+    {
+      "challenge": "Asynchronous Memory Race Conditions",
+      "solution": "Implemented strict MySQL UPSERT query syntax on user memory types. If a background worker writes a memory type that is concurrently being updated, it executes a single-step atomic overwrite, ensuring data integrity."
+    },
+    {
+      "challenge": "Vite Hydration Mismatch with LocalToken",
+      "solution": "Prevented hydration errors by waiting until the component mounts (`useEffect`) to retrieve tokens from `localStorage`, then dispatched custom `auth-change` event listeners to update layouts."
+    },
+    {
+      "challenge": "Speech synthesis rate-limiting & voice allocation",
+      "solution": "Updated the voice api to dynamically query `/v1/voices` on the target key first, picking the first active voice ID to bypass account-specific premade allocation errors."
+    }
+  ],
+  "futureRoadmap": [
+    "Integrate local llama.cpp models for zero-latency local processing.",
+    "Add multi-modal vision input support for design reviews.",
+    "Create voice-to-voice streaming websocket pipelines for fluid natural conversations.",
+    "Support custom file uploads and code sandboxes."
+  ],
+  "metrics": {
+    "components": "15+ Reusable Components",
+    "pages": "4 Pages (Home, Login, Register, Profile)",
+    "hooks": "3 Custom Core Hooks",
+    "utilities": "4 Server Utilities",
+    "apiRoutes": "7 Route Handlers",
+    "features": "12 Core Features",
+    "technologies": "10 Base Tech Integrations"
+  },
+  "recruiterHighlights": {
+    "react": "Utilizes React 19 Client components, async events, state management, and optimized render flows.",
+    "nextjs": "Built on Next.js 16 using App Router structures, server API routes, and optimized file assets.",
+    "architecture": "Structured clean separation of concerns: UI, database connectivity pool, authentication token verifying middlewares, and AI service providers.",
+    "aiIntegration": "Deep integration of LLMs with custom system instructions, auto-summarization, and persistent user profile memories.",
+    "performance": "Maintains low-latency responses by executing complex memory extractions in non-blocking background routines."
+  },
+  "projectStory": "Rudra was originally conceived as a simple Python Flask voice chatbot to experiment with basic speech synthesis. However, the legacy Flask version suffered from blocking event loops and lack of true session persistence. To scale, the project was rebuilt from the ground up: Next.js was chosen for its high-performance App Router and serverless API boundaries, MySQL was integrated to handle structured user records, and a custom background worker pattern was developed. This transformed Rudra from a basic demo into a state-of-the-art stateful SaaS product prototype.",
+  "portfolioSummary": "A premium, voice-activated Next.js AI assistant featuring real-time speech recognition, custom ElevenLabs text-to-speech synthesis, and persistent MySQL memories. Built with background LLM memory-extraction workers that dynamically analyze user input to build personal context, delivering a highly personalized assistant experience without compromising on token latency."
+}
