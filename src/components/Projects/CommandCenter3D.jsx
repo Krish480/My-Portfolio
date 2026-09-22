@@ -69,9 +69,11 @@ function EnergyCore({ hoveredColor }) {
   );
 }
 
-function MissionNode({ project, idx, total, onSelect, hoveredIndex, setHoveredIndex }) {
+function MissionNode({ project, idx, total, onSelect, hoveredIndex, setHoveredIndex, isTouchDevice }) {
   const nodeRef = useRef();
   const angleRef = useRef((idx / total) * Math.PI * 2);
+  const currentSpeedRef = useRef(0.15); // smoothly damped current speed
+  const lastTimeRef = useRef(null);
   const [isSelfHovered, setIsSelfHovered] = useState(false);
 
   const isAnyHovered = hoveredIndex !== null;
@@ -79,15 +81,46 @@ function MissionNode({ project, idx, total, onSelect, hoveredIndex, setHoveredIn
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    
-    // Orbit speed: slows down to a drift if hovered
-    const speedMultiplier = isAnyHovered ? 0.05 : 0.15;
-    angleRef.current = ((idx / total) * Math.PI * 2) + time * speedMultiplier;
+
+    // Initialize last time on first frame
+    if (lastTimeRef.current === null) {
+      lastTimeRef.current = time;
+      return;
+    }
+
+    const delta = time - lastTimeRef.current;
+    lastTimeRef.current = time;
+
+    // Determine target speed:
+    // - Hovered node → freeze (0)
+    // - Any other node hovered → slow drift (0.03)
+    // - Touch device with no hover → slow orbit (0.06)
+    // - Default desktop → normal orbit (0.15)
+    let targetSpeed;
+    if (isHovered) {
+      targetSpeed = 0; // freeze the targeted node
+    } else if (isAnyHovered) {
+      targetSpeed = 0.03; // siblings drift slowly
+    } else if (isTouchDevice) {
+      targetSpeed = 0.06; // slower default on touch
+    } else {
+      targetSpeed = 0.15; // normal desktop speed
+    }
+
+    // Smooth damping toward target speed (no abrupt changes)
+    const dampFactor = 0.08;
+    currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dampFactor;
+
+    // Accumulate angle (no jumps — angle is additive, not time-derived)
+    angleRef.current += currentSpeedRef.current * delta;
 
     const radius = 4.2;
     const x = Math.cos(angleRef.current) * radius;
     const z = Math.sin(angleRef.current) * radius;
-    const y = Math.sin(time * 1.5 + idx) * 0.15; // subtle float offset
+
+    // Damp vertical float when hovered for extra stability
+    const floatAmplitude = isHovered ? 0.02 : 0.15;
+    const y = Math.sin(time * 1.5 + idx) * floatAmplitude;
 
     if (nodeRef.current) {
       nodeRef.current.position.set(x, y, z);
@@ -106,6 +139,14 @@ function MissionNode({ project, idx, total, onSelect, hoveredIndex, setHoveredIn
     }
   };
 
+  // On touch: tap selects immediately (no hover chase needed)
+  const handleTouchEnd = (e) => {
+    if (isTouchDevice) {
+      e.preventDefault();
+      onSelect(idx);
+    }
+  };
+
   return (
     <mesh ref={nodeRef}>
       <sphereGeometry args={[0.25, 16, 16]} />
@@ -114,6 +155,12 @@ function MissionNode({ project, idx, total, onSelect, hoveredIndex, setHoveredIn
         transparent 
         opacity={isHovered ? 1.0 : 0.6} 
       />
+
+      {/* Invisible enlarged hit area for easier targeting (visual size unchanged) */}
+      <mesh visible={false}>
+        <sphereGeometry args={[0.7, 8, 8]} />
+        <meshBasicMaterial transparent opacity={0} />
+      </mesh>
 
       {/* Glow aura */}
       {isHovered && (
@@ -129,12 +176,14 @@ function MissionNode({ project, idx, total, onSelect, hoveredIndex, setHoveredIn
           onClick={() => onSelect(idx)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onTouchEnd={handleTouchEnd}
           className={`group flex flex-col items-center focus:outline-none p-3 rounded-2xl border backdrop-blur-md transition-all duration-300 select-none ${
             isHovered 
               ? "bg-[#030712]/90 -translate-y-2 scale-110" 
               : "bg-[#030712]/60 hover:bg-[#030712]/80 hover:-translate-y-1 scale-100"
           }`}
           style={{
+            cursor: "pointer",
             borderColor: isHovered ? project.themeColor : "rgba(255,255,255,0.06)",
             boxShadow: isHovered 
               ? `0 10px 30px rgba(0,0,0,0.8), 0 0 15px ${project.themeColor}33`
@@ -203,6 +252,13 @@ function CameraRig({ hoveredIndex }) {
 
 export default function CommandCenter3D({ onSelectProject }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // Detect touch capability once on mount
+  useEffect(() => {
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    setIsTouchDevice(isTouch);
+  }, []);
 
   const hoveredColor = hoveredIndex !== null ? projectsData[hoveredIndex].themeColor : null;
 
@@ -217,7 +273,7 @@ export default function CommandCenter3D({ onSelectProject }) {
         </div>
         <div className="hidden sm:flex gap-4">
           <span>COGNITIVE LINK: ACTIVE</span>
-          <span>DOCK GRID: 5/5 ONLINE</span>
+          <span>DOCK GRID: {projectsData.length}/{projectsData.length} ONLINE</span>
         </div>
       </div>
 
@@ -248,6 +304,7 @@ export default function CommandCenter3D({ onSelectProject }) {
             onSelect={onSelectProject}
             hoveredIndex={hoveredIndex}
             setHoveredIndex={setHoveredIndex}
+            isTouchDevice={isTouchDevice}
           />
         ))}
 

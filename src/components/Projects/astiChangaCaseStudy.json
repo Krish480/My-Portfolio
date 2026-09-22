@@ -1,0 +1,106 @@
+{
+  "projectTitle": "Asti Changa — Traditional Strategy Board Game",
+  "productTagline": "A modern web implementation of the ancient Indian turn-based strategy board game, built with React, Vite, and WebSocket real-time networking.",
+  "projectOverview": {
+    "what": "Asti Changa (Ashta Chamma / Chowka Bara) is an authentic digital reproduction of the classic Indian cross-and-circle strategy board game. Players roll cowrie shells to determine moves, capture opponent pawns on unsafe tiles, and race to reach the center square.",
+    "why": "Created to digitize and preserve classic traditional Indian board games into a responsive, high-framerate web experience accessible on modern devices.",
+    "who": "Designed for casual strategy gamers, board game enthusiasts, and players seeking authentic multiplayer board game action in the browser.",
+    "difference": "Combines authentic cowrie shell probability mechanics (1, 2, 3, 4, 8 roll outcomes) with sleek glassmorphic UI, responsive pawn movement animations, and turn-based room lobbies."
+  },
+  "statusBreakdown": {
+    "status": "In Progress",
+    "completedFeatures": [
+      {
+        "title": "5x5 Grid Board System",
+        "description": "Custom CSS grid & SVG board rendering with distinct safe zone cross-hatching and central home tiles."
+      },
+      {
+        "title": "Cowrie Shell Roll Probability",
+        "description": "Simulated 4-shell toss physics generating authentic roll outcomes (1, 2, 3, 4, 8) with bonus turn logic."
+      },
+      {
+        "title": "Turn-Based Movement Engine",
+        "description": "Pawn pathing logic, outer ring loop routing, and inner lane entry mechanics for 2 to 4 players."
+      },
+      {
+        "title": "Tile Capture Mechanics",
+        "description": "Pawn collision detection, capture handling on non-safe tiles, and returning captured pawns to starting nests."
+      }
+    ],
+    "currentlyInProgress": [
+      {
+        "title": "WebSocket State Synchronization",
+        "description": "Optimizing real-time game state broadcasting over WebSockets to ensure zero desync between room host and guests."
+      },
+      {
+        "title": "Connection Recovery & Rejoin",
+        "description": "Implementing room token caching in sessionStorage so players can re-establish session connection seamlessly."
+      },
+      {
+        "title": "Turn Timer & Forfeit Rules",
+        "description": "Refining 30-second countdown turn timers with automatic fallback rolls to prevent stalled matches."
+      }
+    ],
+    "knownIssues": [
+      {
+        "title": "Simultaneous Touch Movements",
+        "description": "Rapid multi-touch input on mobile viewports occasionally triggers dual pawn selection highlights."
+      },
+      {
+        "title": "WebSocket Reconnect Delays",
+        "description": "Network latency spikes above 250ms can temporarily delay pawn move animations on guest clients."
+      }
+    ],
+    "futurePlannedFeatures": [
+      {
+        "title": "AI Bot Opponents",
+        "description": "Minimax-driven single-player computer opponent with adaptive strategy levels for offline training."
+      },
+      {
+        "title": "3D Physics Cowrie Roll",
+        "description": "Three.js and Cannon.js 3D shell tossing animations with dynamic lighting and sound effects."
+      },
+      {
+        "title": "Match History & Leaderboard",
+        "description": "Player profile stats, win-loss record tracking, and room match replay archive."
+      }
+    ]
+  },
+  "problemStatement": {
+    "description": "Traditional board games like Asti Changa feature complex path routing rules (outer loop vs. inner lane transition depending on pawn capture state) and precise cowrie shell roll probabilities that are difficult to model in basic web applications without introducing state race conditions or UI glitches."
+  },
+  "solution": {
+    "description": "Asti Changa resolves these challenges using a deterministic state machine model. Game state rules, turn transitions, shell probability checks, and pawn capture validations run through a pure JS engine, driving a smooth React UI layer with Framer Motion animations."
+  },
+  "targetUsers": [
+    {
+      "role": "Casual Strategy Gamers",
+      "reason": "Enjoys tactical turn-based board games with simple rules but high replayability."
+    },
+    {
+      "role": "Traditional Game Enthusiasts",
+      "reason": "Appreciates accurate digital recreations of authentic cultural games like Ashta Chamma."
+    }
+  ],
+  "technicalArchitecture": {
+    "frontend": "React 18 + Vite with TailwindCSS for ultra-fast UI rendering and Framer Motion pawn transitions.",
+    "stateEngine": "Deterministic turn-based state machine enforcing game board pathing and collision rules.",
+    "networking": "Node.js WebSocket server managing player room creation, turn synchronization, and live match events."
+  },
+  "challengesAndSolutions": [
+    {
+      "challenge": "Handling inner-loop board entry rules which require a pawn to have captured at least one opponent pawn before entering.",
+      "solution": "Implemented a pawn kill-flag tracker within the player state model that unlocks inner-lane pathing vectors dynamically."
+    },
+    {
+      "challenge": "Modeling cowrie shell toss outcomes with non-uniform probability distributions.",
+      "solution": "Engineered a weighted random selection engine matching authentic 4-shell land configurations (all face down = 8, all face up = 4, etc.)."
+    }
+  ],
+  "futureRoadmap": [
+    "Complete WebSocket edge node scaling",
+    "Integrate 3D Three.js shell roll animations",
+    "Deploy AI bot engine with difficulty levels",
+    "Release matchmaking lobby & player ranking system"
+  ]
+}

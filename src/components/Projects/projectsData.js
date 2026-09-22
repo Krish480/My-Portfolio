@@ -4,6 +4,7 @@ import rudraImg from "../../../images/Rudra.jpg";
 import portfolioImg from "../../../images/My_portfolio.jpg";
 import shopMatrixImg from "../../../images/sh.jpg";
 import eietImg from "../../../images/eiet.jpg";
+import astiChangaImg from "../../../images/AstiChanga.png";
 
 export const projectsData = [
   {
@@ -253,6 +254,51 @@ export const projectsData = [
       accessibility: 96,
       responsive: "100%",
       loadingSpeed: "0.4s",
+      codeQuality: "A"
+    },
+    videoWalkthrough: "#",
+    caseStudyLink: "#"
+  },
+  {
+    id: "asti-changa",
+    title: "Asti Changa Strategy Game",
+    subtitle: "Ancient Indian board game with cowrie shell physics & WebSocket multiplayer.",
+    description: "A digital reproduction of the classic Indian strategy game Ashta Chamma / Chowka Bara. Features authentic 4-shell probability math, pawn capture rules, and turn-based room matches.",
+    image: astiChangaImg,
+    techStack: ["React", "Vite", "WebSockets", "Tailwind", "Framer Motion"],
+    features: [
+      "COMPLETED: 5x5 Grid board pathing & outer/inner ring movement engine",
+      "COMPLETED: Authentic cowrie shell roll probability simulation (1, 2, 3, 4, 8)",
+      "IN PROGRESS: Real-time WebSocket room multiplayer synchronization",
+      "IN PROGRESS: Reconnection handling & 30s turn timeout rule engine",
+      "PLANNED: Minimax-driven AI bot opponent for single-player practice"
+    ],
+    github: "https://github.com/Krish480",
+    liveDemo: "#",
+    status: "In Progress",
+    isWip: true,
+    themeColor: "#a855f7",
+    accentColor: "#c084fc",
+    category: "Game Dev & Real-time Web",
+    year: "2024",
+    // Premium Case Study Fields
+    problem: "Classical board games with custom turn rules and stateful movement loops struggle with race conditions and desynchronization when converted to real-time web applications.",
+    solution: "Built a deterministic turn state machine with weighted cowrie toss probabilities, rendering smooth pawn movement animations using React and Framer Motion.",
+    architecture: ["React 18 Client", "Vite Bundler", "Framer Motion Engine", "Node.js WebSocket Node", "State Machine Core"],
+    challenges: "Synchronizing inner-lane entry requirements (requiring at least 1 pawn capture) across multi-player room states without desync.",
+    results: "Achieved 60 FPS pawn movement animations with instant 4-shell roll probability calculation.",
+    futureImprovements: ["Minimax AI bot opponent", "3D Three.js shell rolling physics", "Match history & global room lobbies"],
+    timeline: [
+      { phase: "Board Math", detail: "5x5 Matrix Grid Routing & Pathing Rules engine" },
+      { phase: "Probability Engine", detail: "4-Cowrie Shell Toss Simulation algorithms" },
+      { phase: "UI & Animations", detail: "Glassmorphic board overlays & Framer Motion pawns" },
+      { phase: "Networking (WIP)", detail: "WebSocket room lobbies & match synchronization" }
+    ],
+    metrics: {
+      performance: 96,
+      accessibility: 95,
+      responsive: "100%",
+      loadingSpeed: "0.5s",
       codeQuality: "A"
     },
     videoWalkthrough: "#",

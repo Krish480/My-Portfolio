@@ -92,6 +92,21 @@ const techLogos = {
     version: "v14.2",
     color: "text-white border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 hover:shadow-[0_0_12px_rgba(255,255,255,0.15)] shadow-[0_0_15px_rgba(255,255,255,0.02)]",
     extraClass: "invert brightness-200",
+  },
+  Vite: {
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+    version: "v5.0",
+    color: "text-purple-400 border-purple-500/20 bg-purple-500/5 hover:bg-purple-500/10 hover:border-purple-400/40 hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] shadow-[0_0_15px_rgba(168,85,247,0.02)]",
+  },
+  "Framer Motion": {
+    logo: "https://cdn.svgporn.com/logos/framer.svg",
+    version: "v11.0",
+    color: "text-purple-400 border-purple-500/20 bg-purple-500/5 hover:bg-purple-500/10 hover:border-purple-400/40 hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] shadow-[0_0_15px_rgba(168,85,247,0.02)]",
+  },
+  WebSockets: {
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
+    version: "v4.7",
+    color: "text-emerald-400 border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-400/40 hover:shadow-[0_0_12px_rgba(52,211,153,0.25)] shadow-[0_0_15px_rgba(52,211,153,0.02)]",
   }
 };
 
@@ -103,6 +118,7 @@ const getStationIdentity = (id) => {
     case "shop-matrix": return "COMMERCE SATELLITE";
     case "personal-portfolio": return "COMMAND CENTER SECTOR";
     case "eiet-college": return "EDUCATION TRANSMISSION NODE";
+    case "asti-changa": return "STRATEGY MATRIX HUB";
     default: return "MISSION COMMAND STATION";
   }
 };
